@@ -9,7 +9,7 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Interactive%20App-red?style=for-the-badge\&logo=streamlit)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
 
----
+ 
 
 ##  Overview
 
@@ -17,7 +17,7 @@ With thousands of online courses available on platforms like Udemy, learners oft
 
 This project builds an ** recommendation system** that suggests similar courses based on **semantic similarity of course titles using NLP techniques**.
 
----
+ 
 
 ##  Objective
 
@@ -28,14 +28,14 @@ To design a **content-based recommendation engine** that:
 * Measures similarity between courses
 * Recommends the most relevant learning resources
 
----
+ 
 
 ##  Problem Type
 
 > 🔹 Content-Based Recommendation System
 > 🔹 NLP + Information Retrieval Problem
 
----
+ 
 
 ##  How It Works
 
@@ -53,7 +53,7 @@ Ranking Similar Courses
 Top-N Recommendations
 ```
 
----
+ 
 
 ##  Dataset
 
@@ -65,7 +65,7 @@ Top-N Recommendations
   * Price
   * Category (implicit via text)
 
----
+ 
 
 ##  Key Features
 
@@ -93,7 +93,7 @@ Top-N Recommendations
 * Real-time course recommendations
 * Clean UI for user interaction
 
----
+ 
 
 ##  Project Architecture
 
@@ -111,7 +111,7 @@ Recommendation Engine
 Streamlit Web App
 ```
 
----
+ 
 
 ##  Project Structure
 
@@ -119,27 +119,27 @@ Streamlit Web App
 Course-Recommendation-System/
 │
 ├── data/
-│   └── udemy_course_data.csv
+│   └── raw
+        └── udemy_course_data.csv
 │
 ├── models/
 │   ├── vectorizer.pkl
 │   └── similarity_matrix.pkl
 │
 ├── src/
-│   ├── preprocessing.py
+│   ├── preprocess.py
+│   ├── data_loader.py
 │   ├── vectorizer.py
 │   ├── recommender.py
+│   ├── train.py
 │   ├── utils.py
 │
-├── app/
-│   └── streamlit_app.py
-│
-├── train.py
+├── app.py│
 ├── requirements.txt
 └── README.md
 ```
 
----
+ 
 
 ##  How to Run Locally
 
@@ -151,7 +151,7 @@ git clone https://github.com/jeeva-anand/Course-Recommendation-System
 cd Course-Recommendation-System
 ```
 
----
+ 
 
 ### 2️ Install Dependencies
 
@@ -159,7 +159,7 @@ cd Course-Recommendation-System
 pip install -r requirements.txt
 ```
 
----
+ 
 
 ### 3️ Train Model 
 
@@ -172,7 +172,7 @@ This will generate:
 * `vectorizer.pkl`
 * `similarity_matrix.pkl`
 
----
+ 
 
 ### 4️ Run Streamlit App
 
@@ -180,7 +180,7 @@ This will generate:
 streamlit run app.py
 ```
 
----
+ 
 
 ##  Features of Web App
 
@@ -190,7 +190,7 @@ streamlit run app.py
 *  Instant real-time results
 *  Interactive visualization of relevance
 
----
+ 
 
 ##  Sample Output
 
@@ -204,7 +204,7 @@ streamlit run app.py
 * Python for Data Science (0.84)
 * AI Fundamentals (0.81)
 
----
+ 
 
 ##  Key Insights
 
@@ -213,7 +213,7 @@ streamlit run app.py
 * Cosine similarity is effective for text-based recommendation
 * Cleaning text significantly improves relevance
 
----
+ 
 
 ##  Evaluation Strategy
 
