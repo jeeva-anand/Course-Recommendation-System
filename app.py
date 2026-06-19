@@ -1,34 +1,27 @@
+from src.data_loader import load_data
 import streamlit as st
 import pandas as pd
-
 from src.utils import load_model
+
+
 from src.recommender import CourseRecommender
 
-# ----------------------------
-# CONFIG
-# ----------------------------
+
 st.set_page_config(
-    page_title="CourseFlix 🎬",
+    page_title="CourseFlix ",
     layout="wide"
 )
 
-# ----------------------------
-# LOAD DATA
-# ----------------------------
-data = pd.read_csv("data/udemy_course_data.csv")
+data = pd.read_csv("./data/raw/udemy_course_data.csv")
 
-# vectorizer = load_model("models/vectorizer.pkl")
-# matrix = load_model("models/similarity_matrix.pkl")
+vectorizer = load_model("./models/vectorizer.pkl")
+matrix = load_model("./models/similarity_matrix.pkl")
 
 
-matrix = 0.0
+model = CourseRecommender(matrix,data)
 
-model = CourseRecommender(matrix, data)
 
-# ----------------------------
-# HERO SECTION
-# ----------------------------
-st.title("🎬 CourseFlix")
+st.title(" CourseFlix")
 st.subheader("Find your next skill like you find movies on Netflix")
 
 course = st.selectbox(
@@ -38,14 +31,12 @@ course = st.selectbox(
 
 top_n = 10
 
-if st.button("🎯 Get Recommendations"):
+if st.button(" Get Recommendations"):
 
     results = model.recommend(course, top_n)
 
-    # ----------------------------
-    # SECTION 1: RECOMMENDATIONS
-    # ----------------------------
-    st.markdown("## 🔥 Recommended for You")
+  
+    st.markdown("##  Recommended for You")
 
     cols = st.columns(5)
 
@@ -55,13 +46,11 @@ if st.button("🎯 Get Recommendations"):
 
             st.markdown("### 📘")
             st.write(row["course_title"])
-            st.caption(f"💰 ${row['price']}")
+            st.caption(f" ${row['price']}")
             st.progress(float(row["similarity_score"]))
 
-# ----------------------------
-# SECTION 2: TRENDING
-# ----------------------------
-st.markdown("## 🚀 Trending Courses")
+
+st.markdown("## Trending Courses")
 
 trending = data.sample(10)
 
@@ -71,14 +60,12 @@ for i, row in trending.iterrows():
 
     with cols[i % 5]:
 
-        st.markdown("### 🎥")
+        st.markdown("### 📘")
         st.write(row["course_title"])
-        st.caption(f"💰 ${row['price']}")
+        st.caption(f" ${row['price']}")
 
-# ----------------------------
-# SECTION 3: BUDGET PICKS
-# ----------------------------
-st.markdown("## 💰 Budget-Friendly Courses")
+
+st.markdown("## Budget-Friendly Courses")
 
 budget = data[data["price"] < data["price"].median()].sample(10)
 
@@ -88,6 +75,6 @@ for i, row in budget.iterrows():
 
     with cols[i % 5]:
 
-        st.markdown("### 🟢")
+        st.markdown("### 📘")
         st.write(row["course_title"])
-        st.caption(f"💰 ${row['price']}")
+        st.caption(f" ${row['price']}")
