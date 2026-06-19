@@ -1,10 +1,10 @@
 from src.data_loader import load_data
 import streamlit as st
 import pandas as pd
-from src.utils import load_model
+from utils import load_model
 
 
-from src.recommender import CourseRecommender
+from recommender import CourseRecommender
 
 
 st.set_page_config(
